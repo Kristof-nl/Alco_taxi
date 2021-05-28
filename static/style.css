@@ -12,13 +12,68 @@ ul {
   
   li a {
     display: block;
-    color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0);  
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
   }
   
   li a:hover {
-    background-color: rgb(156, 236, 119);
+    background-color: rgb(106, 236, 46);
     color: black
   }
+
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background-color: rgb(185, 235, 48);
+    color: black;
+    text-align: center;
+}
+
+.f1,
+.f2,
+.f3 {
+     
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+display: inline-block;
+text-align: right;
+font-size: 12px;
+padding: 0 6%;
+min-width: 300px;
+width: 33%;
+}
+     
+.f1 {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+  }
+
+.row {
+    margin-top: 5px;
+}
+
+#logo {
+    height: 40px;
+    width: 40px;
+    float: left;
+}
+
+#page_logo {
+    height: 100px;
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 15px;
+}
+
