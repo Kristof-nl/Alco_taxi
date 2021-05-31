@@ -77,3 +77,8 @@ width: 33%;
     padding-top: 15px;
 }
 
+#nav_logo {
+    height: 30px;
+    width: 30px;
+    padding-right: 2px;
+}
