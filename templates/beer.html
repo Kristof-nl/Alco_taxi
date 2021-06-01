@@ -1,24 +1,72 @@
 {% extends "base.html" %}
 {% block title %}Beer{% endblock %}
 {% block content %}
-<div class="split left">
+<div class="split">
     <div class="centered">
-      <img src="img_avatar2.png" alt="Avatar woman">
-      <h2>Jane Flex</h2>
-      <p>Some text.</p>
+      <img id="product" src="/static/beer_can.png" alt="Beer can">
+      <h2>Beer in can</h2>
+      <p>Price for one can 1.20</p>
     </div>
-  </div><div class="split left">
+  </div><div class="split">
     <div class="centered">
-      <img src="img_avatar2.png" alt="Avatar woman">
-      <h2>Jane Flex</h2>
-      <p>Some text.</p>
+        <img id="product" src="/static/beer_bottle.png" alt="Beer bottle">
+      <h2>Beer in bootle</h2>
+      <p>Price for one bottle 1.35</p>
     </div>
-  </div><div class="split left">
+  </div><div class="split">
     <div class="centered">
-      <img src="img_avatar2.png" alt="Avatar woman">
-      <h2>Jane Flex</h2>
-      <p>Some text.</p>
+        <img id="product_wide" src="/static/beer_case.png" alt="Beer case">
+      <h2>Beer case</h2>
+      <p>12 bottles in case. Price 15.00</p>
     </div>
+  </div>
+
+  <div>
+    <div>
+        <div class="divider-middle"></div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+             Choose quantity 
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+            <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+            </ul>
+            <div class="divider"></div>
+        </div>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary">Add to basket</button>
+      </div>
+      <div class="divider-large"></div>
+      <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Choose quantity
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+        <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+        </ul>
+        <div class="divider"></div>
+    </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary">Add to basket</button>
+        </div>
+        <div class="divider-large"></div>
+        <div class="btn-group" role="group">
+            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                Choose quantity
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+            <li><a class="dropdown-item" href="#">Dropdown link</a></li>
+            </ul>
+            <div class="divider"></div>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-primary">Add to basket</button>
+        </div>  
+    </div>
+    
   </div>
 
 {% endblock content %}
