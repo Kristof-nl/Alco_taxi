@@ -19,7 +19,7 @@ ul {
   }
   
   li a:hover {
-    background-color: rgb(47, 189, 4);
+    background-color: rgb(75, 197, 38);
     color: black
   }
 
@@ -126,6 +126,6 @@ h2 {
 }
 
 .divider-large{
-  width: 190px;
+  width: 185px;
   height: auto;
   display: inline-block;

@@ -6,9 +6,15 @@ app = Flask(__name__)
 def home():
     return render_template("home.html")
 
+
 @app.route('/beer')
 def beer():
     return render_template("beer.html")
+
+
+@app.route('/wine')
+def wine():
+    return render_template("wine.html")
 
 
 if __name__ == "__main__":
