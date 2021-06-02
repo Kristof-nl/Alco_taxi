@@ -3,7 +3,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: rgb(118, 218, 88);
+    background-color: rgb(108, 228, 84)  ;
   }
   
   li {
@@ -19,7 +19,7 @@ ul {
   }
   
   li a:hover {
-    background-color: rgb(106, 236, 46);
+    background-color: rgb(47, 189, 4);
     color: black
   }
 
@@ -29,7 +29,7 @@ ul {
     bottom: 0;
     width: 100%;
     height: 80px;
-    background-color: rgb(223, 235, 48);
+    background-color: rgb(234, 248, 39);
     color: black;
     text-align: center;
 }
@@ -86,7 +86,7 @@ width: 33%;
 .split {
   color: black;
   background-color:rgb(174, 240, 144);
-  border-radius: 15px;
+  border-radius: 10px;
   width: 400px;
   height: 400px;
   float: left;
@@ -120,12 +120,12 @@ h2 {
 }
 
 .divider-middle{
-  width: 95px;
+  width: 90px;
   height: auto;
   display: inline-block;
 }
 
 .divider-large{
-  width: 195px;
+  width: 190px;
   height: auto;
   display: inline-block;
