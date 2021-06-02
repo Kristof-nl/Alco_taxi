@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% block title %}Strong alcohol{% endblock %}
+{% block content %}
+<div class="split">
+    <div class="centered">
+      <img id="product" src="/static/vodka.png" alt="Vodka">
+      <h2>Vodka</h2>
+      <p>Price for one bottle 17.95</p>
+    </div>
+  </div><div class="split">
+    <div class="centered">
+        <img id="product" src="/static/gin.png" alt="Gin">
+      <h2>Gin</h2>
+      <p>Price for one bottle 22.40</p>
+    </div>
+  </div><div class="split">
+    <div class="centered">
+        <img id="product_wide" src="/static/whisky2.png" alt="Whisky">
+      <h2>Whisky</h2>
+      <p>Price for one bottle 31.25</p>
+    </div>
+  </div>
+
+  <div>
+    <div>
+        <div class="divider-middle"></div>
+        <div class="btn-group" role="group">
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Choose quantity</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+          <div class="divider"></div>
+        </div>
+      <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="submit" class="btn btn-primary">Add to basket</button>
+      </div>
+      <div class="divider-large"></div>
+      <div class="btn-group" role="group">
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Choose quantity</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+        <div class="divider"></div>
+    </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="submit" class="btn btn-primary">Add to basket</button>
+        </div>
+        <div class="divider-large"></div>
+        <div class="btn-group" role="group">
+          <select class="form-select" aria-label="Default select example">
+            <option selected>Choose quantity</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+            <div class="divider"></div>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="submit" class="btn btn-primary">Add to basket</button>
+        </div>  
+    </div>
+    
+  </div>
+
+{% endblock content %}
