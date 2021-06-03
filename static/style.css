@@ -129,3 +129,28 @@ h2 {
   width: 185px;
   height: auto;
   display: inline-block;
+}
+
+.content-section{
+  background-color:  rgb(158, 241, 89);;
+  text-align: center;
+  width: 40%;
+  margin: auto;
+  padding: 10px;
+  border-radius: 15px;
+  margin-top: 40px;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin: 10px;
+  margin-top: 20px;
+}
+
+legend{
+  margin-bottom: 15px;
+}
+
+small {
+  margin-left: 675px !important;
+}
