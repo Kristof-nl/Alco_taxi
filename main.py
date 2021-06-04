@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash, redirect, get_flashed_messages, url_for
 from forms import RegistrationForm, LoginForm
 
 app = Flask(__name__)
@@ -30,6 +30,10 @@ def strong():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
+    if form.validate_on_submit():
+        print("Yes")
+        flash(f"Account created for {form.username.data}.",'success')
+        return redirect(url_for('beer'))
     return render_template('register.html', title='Register', form=form)
 
 
