@@ -31,15 +31,17 @@ def strong():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        print("Yes")
         flash(f"Account created for {form.username.data}. You can start making orders.",'success')
         return redirect(url_for('beer'))
     return render_template('register.html', title='Register', form=form)
 
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    if form.validate_on_submit():
+        flash(f"You have been logged in!",'success')
+        return redirect(url_for('beer'))
     return render_template('login.html', title='Login', form=form)
 
 
