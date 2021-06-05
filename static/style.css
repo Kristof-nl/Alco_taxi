@@ -154,3 +154,8 @@ legend{
 small {
   margin-left: 675px !important;
 }
+
+.message{
+  position: fixed;
+  font-size: 14px;
+}

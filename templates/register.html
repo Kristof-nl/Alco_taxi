@@ -1,6 +1,13 @@
 {% extends "base.html" %}
 {% block title %}Register{% endblock %}
 {% block content %}
+    {% for field, errors in form.errors.items() %}
+    <small class="message">
+        <div class="alert alert-danger" role="alert">
+            {{ ', '.join(errors) }}
+          </div>
+    </small>
+    {% endfor %}
     <div class="content-section">
         <form method="POST" action="">
             {{ form.hidden_tag() }}
