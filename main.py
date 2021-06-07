@@ -45,5 +45,10 @@ def login():
     return render_template('login.html', title='Login', form=form)
 
 
+@app.route('/basket', methods=['GET', 'POST'])
+def basket():
+    return "basket"
+
+
 if __name__ == "__main__":
     app.run(debug=True)
