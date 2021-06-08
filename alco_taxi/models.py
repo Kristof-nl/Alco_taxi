@@ -1,0 +1,35 @@
+import datetime
+from alco_taxi import db
+
+
+#Create models
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(20), unique=True, nullable=False)
+    email = db.Column(db.String(100), unique=True, nullable=False)
+    password = db.Column(db.String(60), nullable=False)
+    orders = db.relationship('Order', lazy=True)
+
+    def __repr__(self):
+        return f"User('{self.username}', '{self.email}')"
+
+
+class Product(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    product_name = db.Column(db.String(50), unique=True, nullable=False)
+    price = db.Column(db.Float)
+    barcode = db.Column(db.String(12), unique=True, nullable=False)
+    
+
+    def __repr__(self):
+        return f"Product('{self.product_name}')"
+
+
+class Order(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    order_time = db.Column(db.DateTime, nullable=False, default= datetime.datetime.utcnow())
+    items = db.relationship('Product', lazy=True)
+    owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return f"Products in order('{self.items}')"
