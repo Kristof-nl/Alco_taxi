@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, get_flashed_messages, url_for
 from alco_taxi.models import User, Product, Order
 from alco_taxi.forms import RegistrationForm, LoginForm
-from alco_taxi import app
+from alco_taxi import app, db, bcrypt
 
 
 @app.route('/')
@@ -29,8 +29,13 @@ def strong():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        flash(f"Account created for {form.username.data}. You can start making orders.",'success')
-        return redirect(url_for('beer'))
+        #Hash password and put data to datebase
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        flash(f"Account created for {form.username.data}. You can login and start making orders.",'success')
+        return redirect(url_for('login'))
     return render_template('register.html', title='Register', form=form)
 
 

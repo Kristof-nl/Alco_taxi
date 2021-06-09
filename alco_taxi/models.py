@@ -8,7 +8,6 @@ class User(db.Model):
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
-    orders = db.relationship('Order', lazy=True)
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}')"
@@ -19,7 +18,7 @@ class Product(db.Model):
     product_name = db.Column(db.String(50), unique=True, nullable=False)
     price = db.Column(db.Float)
     barcode = db.Column(db.String(12), unique=True, nullable=False)
-    
+    order = db.Column(db.Integer(), db.ForeignKey('order.id'))
 
     def __repr__(self):
         return f"Product('{self.product_name}')"
