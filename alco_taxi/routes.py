@@ -2,6 +2,8 @@ from flask import render_template, flash, redirect, get_flashed_messages, url_fo
 from alco_taxi.models import User, Product, Order
 from alco_taxi.forms import RegistrationForm, LoginForm
 from alco_taxi import app, db, bcrypt
+from flask_login import login_user
+from alco_taxi.functions import get_user_name
 
 
 @app.route('/')
@@ -42,9 +44,15 @@ def register():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    form2 = RegistrationForm()
     if form.validate_on_submit():
-        flash(f"You have been logged in!",'success')
-        return redirect(url_for('beer'))
+        user = User.query.filter_by(email=form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, remember=form.remember.data)
+            flash(f'Welcome {get_user_name(user)}, you can start making orders.', 'success')
+            return redirect(url_for('home'))
+        else:
+            flash('Login unsuccessful. Please check email and password.', 'danger')
     return render_template('login.html', title='Login', form=form)
 
 
