@@ -170,3 +170,21 @@ small {
   margin-top: 14px !important; 
   margin-left: 225px !important;
 }
+
+#price {
+  right: auto;
+}
+
+.fab {
+  color: black;
+  font-size: 30px;
+}
+
+.fas {
+  color: black;
+  font-size: 30px;
+}
+
+a {
+  text-align: start;
+}

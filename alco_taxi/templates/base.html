@@ -7,10 +7,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>{% block title %}{% endblock %}</title>
+    <script src="https://kit.fontawesome.com/1837d263d8.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <ul>
-        <li><a href="{{ url_for('home') }}"><img id="nav_logo" src="/static/home.png" alt="Home">Home</a></li>
+        <li><a href="{{ url_for('home') }}"><i class="fas fa-home"></i>Home</a></li>
         <li><a href="{{ url_for('beer') }}"><img id="nav_logo" src="/static/beer.png" alt="Beer">Beer</a></li>
         <li><a href="{{ url_for('wine') }}"><img id="nav_logo" src="/static/grape.png" alt="Wine">Wine</a></li>
         <li><a href="{{ url_for('strong') }}"><img id="nav_logo" src="/static/whisky.png" alt="Strong Alcohol">Strong Alcohol</a></li>
@@ -42,18 +43,17 @@
         <div class="row">
           <div class="column">
             <a href="https://github.com/Kristof-nl"> 
-              <img id="logo" src="/static/github_PNG40.png" alt="Logo Github">
+              <i class="fab fa-github"></i>
             </a>
           </div>
           <div class="column">
             <a href = "mailto: hermaszewski.krzysztof@gmail.com">
-              <img id="logo" src="/static/pngfind.com-mail-icon-png-533871.png" alt="Logo Email">
+              <i class="fas fa-envelope"></i>
             </a>
           </div>
           <div class="column">
             <a href="https://www.linkedin.com/in/krzysztof-hermaszewski-a6580b210/">
-            <img id="logo" src="/static/linkedin.png" alt="Logo linkedin">
-            </a>
+              <i class="fab fa-linkedin"></i>
           </div>
         </div>
       </div>
