@@ -10,7 +10,7 @@ class RegistrationForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password', 
     message="Passwords must match.")])
-    submit = SubmitField('Sing up')
+    submit = SubmitField('Sign in')
 
     #Check of data is unique
     def validate_username(self, username):

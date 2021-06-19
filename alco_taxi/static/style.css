@@ -3,7 +3,7 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: rgb(108, 228, 84)  ;
+    background-color: rgb(25, 201, 98);
   }
   
   li {
@@ -19,7 +19,7 @@ ul {
   }
   
   li a:hover {
-    background-color: rgb(75, 197, 38);
+    background-color:  rgb(78, 207, 132) ;
     color: black
   }
 
@@ -28,8 +28,8 @@ ul {
     left: 0;
     bottom: 0;
     width: 100%;
-    height: 80px;
-    background-color: rgb(234, 248, 39);
+    height: 70px;
+    background-color:  rgb(117, 133, 124) ;
     color: black;
     text-align: center;
 }
@@ -85,7 +85,7 @@ width: 33%;
 
 .split {
   color: black;
-  background-color:rgb(174, 240, 144);
+  background-color:  rgb(25, 201, 98);
   border-radius: 10px;
   width: 400px;
   height: 400px;
@@ -132,13 +132,13 @@ h2 {
 }
 
 .content-section{
-  background-color:  rgb(158, 241, 89);;
+  background-color:   rgb(25, 201, 98);
   text-align: center;
   width: 40%;
   margin: auto;
   padding: 5px;
   border-radius: 15px;
-  margin-top: 25px;
+  margin-top: 45px;
   margin-bottom: 15px;
 }
 
@@ -176,15 +176,17 @@ small {
 }
 
 .fab {
-  color: black;
-  font-size: 30px;
-}
+    color: black;
+    text-align:center;
+    font-size: 30px;
+  }
 
 .fas {
   color: black;
+  text-align:center;
   font-size: 30px;
 }
 
-a {
-  text-align: start;
+span {
+  margin: 5px;
 }
