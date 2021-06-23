@@ -29,7 +29,7 @@ ul {
     bottom: 0;
     width: 100%;
     height: 70px;
-    background-color:  rgb(117, 133, 124) ;
+    background-color:   rgb(25, 201, 98) ;
     color: black;
     text-align: center;
 }
@@ -126,7 +126,7 @@ h2 {
 }
 
 .divider-large{
-  width: 185px;
+  width: 175px;
   height: auto;
   display: inline-block;
 }
@@ -172,7 +172,7 @@ small {
 }
 
 #price {
-  right: auto;
+  text-align-last:right;
 }
 
 .fab {
@@ -189,4 +189,12 @@ small {
 
 span {
   margin: 5px;
+}
+
+option {
+  text-align: center;
+}
+
+#place {
+  color: rgb(230, 42, 42);
 }
