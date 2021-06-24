@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, get_flashed_messages, url_fo
 from alco_taxi.models import User, Product, Order
 from alco_taxi.forms import RegistrationForm, LoginForm
 from alco_taxi import app, db, bcrypt
-from flask_login import login_user
+from flask_login import login_user, current_user, logout_user
 from alco_taxi.functions import get_user_name
 
 
@@ -29,6 +29,9 @@ def strong():
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
+    #Get user to home page if he is log already in
+    if current_user.is_authenticated:
+        return  redirect(url_for('home'))
     form = RegistrationForm()
     if form.validate_on_submit():
         #Hash password and put data to datebase
@@ -43,17 +46,27 @@ def register():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    #Get user to home page if he is log already in
+    if current_user.is_authenticated:
+        return  redirect(url_for('home'))
     form = LoginForm()
     form2 = RegistrationForm()
     if form.validate_on_submit():
+        #User validation
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
-            flash(f'Welcome {get_user_name(user)}, you can start making orders.', 'success')
+            flash(f'Welcome {get_user_name(user)}! You can start making orders.', 'success')
             return redirect(url_for('home'))
         else:
             flash('Login unsuccessful. Please check email and password.', 'danger')
     return render_template('login.html', title='Login', form=form)
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
 
 
 @app.route('/basket', methods=['GET', 'POST'])
