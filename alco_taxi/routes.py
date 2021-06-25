@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, get_flashed_messages, url_for
 from alco_taxi.models import User, Product, Order
-from alco_taxi.forms import RegistrationForm, LoginForm
+from alco_taxi.forms import RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm
 from alco_taxi import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user
 from alco_taxi.functions import get_user_name
@@ -69,6 +69,15 @@ def logout():
 
 
 
-@app.route('/basket', methods=['GET', 'POST'])
+@app.route('/cart')
 def basket():
-    return "basket"
+    return "cart"
+
+@app.route('/account')
+def account():
+    return "account"
+
+
+@app.route('/reset_password', methods=['GET', 'POST'])
+def reset_request():
+    return "account"
