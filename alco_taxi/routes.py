@@ -5,6 +5,13 @@ from alco_taxi import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user
 from alco_taxi.functions import get_user_name
 
+#Route to get data from datebase
+@app.context_processor
+def context_processor():
+    products = Product.query.all()
+    print(products)
+    return dict(products=products)
+
 
 @app.route('/')
 def home():

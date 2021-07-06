@@ -2,23 +2,27 @@
 {% block title %}Beer{% endblock %}
 {% block content %}
 
+
+<p>{{products[0].product_name}}</p>
+
+
 <div class="split">
     <div class="centered">
       <img id="product" src="/static/beer_can.png" alt="Beer can">
-      <h2>Beer in can</h2>
-      <p>Price for one can 1.20</p>
+      <h2>{{products[0].product_name}}</h2>
+      <p>Price for one can {{ "%.2f"|format(products[0].price) }}</p>
     </div>
   </div><div class="split">
     <div class="centered">
         <img id="product" src="/static/beer_bottle.png" alt="Beer bottle">
-      <h2>Beer in bootle</h2>
-      <p>Price for one bottle 1.35</p>
+      <h2>{{products[1].product_name}}</h2>
+      <p>Price for one bottle {{ "%.2f"|format(products[1].price) }}</p>
     </div>
   </div><div class="split">
     <div class="centered">
         <img id="product_wide" src="/static/beer_case.png" alt="Beer case">
-      <h2>Beer case</h2>
-      <p>12 bottles in case. Price 15.00</p>
+      <h2>{{products[2].product_name}}</h2>
+      <p>12 bottles in case. Price {{ "%.2f"|format(products[2].price) }}</p>
     </div>
   </div>
 
@@ -28,16 +32,16 @@
         <div class="btn-group" role="group">
           <select class="form-select" aria-label="Default select example">
             <option selected>Choose quantity</option>
-            <option value="1">1 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(1*1.20|float)}}€</option>
-            <option value="2">2 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(2*1.20|float)}}€ </option>
-            <option value="3">3 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(3*1.20|float)}}€ </option>
-            <option value="4">4 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(4*1.20|float)}}€ </option>
-            <option value="5">5 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(5*1.20|float)}}€ </option>
-            <option value="6">6 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(6*1.20|float)}}€ </option>
-            <option value="7">7 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(7*1.20|float)}}€ </option>
-            <option value="8">8 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(8*1.20|float)}}€ </option>
-            <option value="9">9 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{"%.2f"|format(9*1.20|float)}}€ </option>
-            <option value="10">10&emsp;&emsp;&emsp;&nbsp;{{"%.2f"|format(10*1.20|float)}}€ </option>
+            <option value="1">1 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[0].price) }}€</option>
+            <option value="2">2 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[0].price*2) }}€ </option>
+            <option value="3">3 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[0].price*3) }}€ </option>
+            <option value="4">4 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[0].price*4) }}€ </option>
+            <option value="5">5 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[0].price*5) }}€ </option>
+            <option value="6">6 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[0].price*6) }}€ </option>
+            <option value="7">7 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[0].price*7) }}€ </option>
+            <option value="8">8 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[0].price*8) }}€ </option>
+            <option value="9">9 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[0].price*9) }}€ </option>
+            <option value="10">10&emsp;&emsp;&emsp;&nbsp;{{ "%.2f"|format(products[0].price*10) }}€ </option>
           </select>
           <div class="divider"></div>
         </div>
@@ -48,16 +52,16 @@
       <div class="btn-group" role="group">
         <select class="form-select" aria-label="Default select example">
           <option selected>Choose quantity</option>
-            <option value="1">1 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(1*1.35|float)}}€</option>
-            <option value="2">2 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(2*1.35|float)}}€ </option>
-            <option value="3">3 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(3*1.35|float)}}€ </option>
-            <option value="4">4 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(4*1.35|float)}}€ </option>
-            <option value="5">5 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(5*1.35|float)}}€ </option>
-            <option value="6">6 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(6*1.35|float)}}€ </option>
-            <option value="7">7 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(7*1.35|float)}}€ </option>
-            <option value="8">8 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{"%.2f"|format(8*1.35|float)}}€ </option>
-            <option value="9">9 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{"%.2f"|format(9*1.35|float)}}€ </option>
-            <option value="10">10&emsp;&emsp;&emsp;&nbsp;{{"%.2f"|format(10*1.35|float)}}€ </option>
+          <option value="1">1 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[1].price) }}€</option>
+          <option value="2">2 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[1].price*2) }}€ </option>
+          <option value="3">3 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[1].price*3) }}€ </option>
+          <option value="4">4 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[1].price*4) }}€ </option>
+          <option value="5">5 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[1].price*5) }}€ </option>
+          <option value="6">6 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[1].price*6) }}€ </option>
+          <option value="7">7 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[1].price*7) }}€ </option>
+          <option value="8">8 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[1].price*8) }}€ </option>
+          <option value="9">9 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[1].price*9) }}€ </option>
+          <option value="10">10&emsp;&emsp;&emsp;&nbsp;{{ "%.2f"|format(products[1].price*10) }}€ </option>
         </select>
         <div class="divider"></div>
     </div>
@@ -68,16 +72,16 @@
         <div class="btn-group" role="group">
           <select class="form-select" aria-label="Default select example">
             <option selected>Choose quantity</option>
-            <option value="1">1 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(1*15.00|float)}}€</option>
-            <option value="2">2 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(2*15.00|float)}}€ </option>
-            <option value="3">3 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(3*15.00|float)}}€ </option>
-            <option value="4">4 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(4*15.00|float)}}€ </option>
-            <option value="5">5 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(5*15.00|float)}}€ </option>
-            <option value="6">6 &emsp;&emsp;&emsp;&emsp;{{"%.2f"|format(6*15.00|float)}}€ </option>
-            <option value="7">7 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{"%.2f"|format(7*15.00|float)}}€ </option>
-            <option value="8">8 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{"%.2f"|format(8*15.00|float)}}€ </option>
-            <option value="9">9 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{"%.2f"|format(9*15.00|float)}}€ </option>
-            <option value="10">10&emsp;&emsp;&emsp;&nbsp;{{"%.2f"|format(10*15.00|float)}}€ </option>
+            <option value="1">1 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[2].price) }}€</option>
+          <option value="2">2 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[2].price*2) }}€ </option>
+          <option value="3">3 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[2].price*3) }}€ </option>
+          <option value="4">4 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[2].price*4) }}€ </option>
+          <option value="5">5 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[2].price*5) }}€ </option>
+          <option value="6">6 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[2].price*6) }}€ </option>
+          <option value="7">7 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[2].price*7) }}€ </option>
+          <option value="8">8 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[2].price*8) }}€ </option>
+          <option value="9">9 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[2].price*9) }}€ </option>
+          <option value="10">10&emsp;&emsp;&emsp;&nbsp;{{ "%.2f"|format(products[2].price*10) }}€ </option>
           </select>
             <div class="divider"></div>
         </div>
@@ -87,5 +91,4 @@
     </div>
     
   </div>
-
 {% endblock content %}

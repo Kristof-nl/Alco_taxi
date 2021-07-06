@@ -48,8 +48,7 @@ class Product(db.Model):
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     order_time = db.Column(db.DateTime, nullable=False, default= datetime.datetime.utcnow())
-    items = db.relationship('Product', lazy=True)
-    owner = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    owner = db.Column(db.Integer())
 
     def __repr__(self):
         return f"Products in order('{self.items}')"
