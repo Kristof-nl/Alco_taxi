@@ -18,6 +18,25 @@ def home():
     return render_template("home.html")
 
 
+@app.route('/admin')
+def admin():
+    if current_user.is_authenticated and current_user.username == 'admin':
+        products = Product.query.all()
+        return render_template("admin.html")
+    else:
+        flash(f"You don't have access to this section",'danger')
+        return render_template("home.html")
+
+
+@app.route('/admin/update<int:id>', methods=['GET','POST'])
+def update(id):
+    if current_user.is_authenticated and current_user.username == 'admin':
+        return render_template("update.html")
+    else:
+        flash(f"You don't have access to this section",'danger')
+        return render_template("home.html")
+
+
 @app.route('/beer')
 def beer():
     return render_template("beer.html")
@@ -63,11 +82,15 @@ def login():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
-            flash(f'Welcome {get_user_name(user)}! You can start making orders.', 'success')
+            if current_user.username == 'admin':
+                flash(f'Welcome admin!', 'success')
+            else:
+                flash(f'Welcome {get_user_name(user)}! You can start making orders.', 'success')
             return redirect(url_for('home'))
         else:
             flash('Login unsuccessful. Please check email and password.', 'danger')
     return render_template('login.html', title='Login', form=form)
+
 
 @app.route('/logout')
 def logout():

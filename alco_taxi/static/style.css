@@ -114,7 +114,7 @@ h2 {
   height: 250px;}
 
 .divider{
-  width: 15px;
+  width: 10px;
   height: auto;
   display: inline-block;
 }
@@ -189,4 +189,13 @@ small {
 
 span {
   margin: 5px;
+}
+
+.small_image {
+  height: 50px;
+  width: 50px;
+}
+
+table {
+  margin: 25px;
 }

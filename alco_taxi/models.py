@@ -40,6 +40,8 @@ class Product(db.Model):
     product_name = db.Column(db.String(50), unique=True, nullable=False)
     price = db.Column(db.Float)
     barcode = db.Column(db.String(12), unique=True, nullable=False)
+    image = db.Column(db.String(50), unique=True, nullable=False)
+
 
     def __repr__(self):
         return f"Product('{self.product_name}')"
