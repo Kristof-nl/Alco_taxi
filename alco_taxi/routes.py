@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, get_flashed_messages, url_for
 from alco_taxi.models import User, Product, Order
-from alco_taxi.forms import RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm
+from alco_taxi.forms import RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm, UpdateItem
 from alco_taxi import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user
 from alco_taxi.functions import get_user_name
@@ -22,7 +22,7 @@ def home():
 def admin():
     if current_user.is_authenticated and current_user.username == 'admin':
         products = Product.query.all()
-        return render_template("admin.html")
+        return render_template("admin.html", title="Admin")
     else:
         flash(f"You don't have access to this section",'danger')
         return render_template("home.html")
@@ -31,7 +31,12 @@ def admin():
 @app.route('/admin/update<int:id>', methods=['GET','POST'])
 def update(id):
     if current_user.is_authenticated and current_user.username == 'admin':
-        return render_template("update.html")
+        product = Product.query.get_or_404(id)
+        form = UpdateItem()
+        form.product_name.data = product.product_name
+        form.product_price.data = product.price
+        form.barcode.data = product.barcode
+        return render_template("update.html", title="Update item", form=form, product=product)
     else:
         flash(f"You don't have access to this section",'danger')
         return render_template("home.html")

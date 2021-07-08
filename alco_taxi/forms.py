@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, DecimalField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from alco_taxi.models import User
 
@@ -46,3 +46,10 @@ class ResetPasswordForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password',
     message="Passwords must match.")]) 
     submit = SubmitField('Reset Password')
+
+
+class UpdateItem(FlaskForm):
+    product_name = StringField('Product name', validators= [Length(max=25)])
+    product_price = DecimalField('Price', validators= [Length(max=6)])
+    barcode = StringField('Barcode', validators= [Length(12)])
+    submit = SubmitField('Confirm')
