@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, get_flashed_messages, url_for
+from flask import render_template, flash, redirect, get_flashed_messages, url_for, request
 from alco_taxi.models import User, Product, Order
 from alco_taxi.forms import RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm, UpdateItem
 from alco_taxi import app, db, bcrypt
@@ -18,7 +18,7 @@ def home():
     return render_template("home.html")
 
 
-@app.route('/admin')
+@app.route('/admin/')
 def admin():
     if current_user.is_authenticated and current_user.username == 'admin':
         products = Product.query.all()
@@ -28,14 +28,47 @@ def admin():
         return render_template("home.html")
 
 
-@app.route('/admin/update<int:id>', methods=['GET','POST'])
+@app.route('/admin/product/')
+def admin_product():
+    if current_user.is_authenticated and current_user.username == 'admin':
+        products = Product.query.all()
+        return render_template("admin_product.html", title="Admin")
+    else:
+        flash(f"You don't have access to this section",'danger')
+        return render_template("home.html")
+
+
+@app.route('/admin/users/')
+def admin_users():
+    if current_user.is_authenticated and current_user.username == 'admin':
+        products = Product.query.all()
+        return render_template("admin_users.html", title="Admin")
+    else:
+        flash(f"You don't have access to this section",'danger')
+        return render_template("home.html")
+
+
+
+@app.route('/admin/product/update<int:id>', methods=['GET','POST'])
 def update(id):
     if current_user.is_authenticated and current_user.username == 'admin':
         product = Product.query.get_or_404(id)
         form = UpdateItem()
+        if request.method == "POST":
+            product.product_name = form.product_name.data
+            product.price = form.product_price.data
+            product.barcode = form.barcode.data
+            product.image = form.image.data
+            db.session.commit()
+            flash(f"You product has been updated",'success')
+            return redirect(url_for('admin_product'))
+
         form.product_name.data = product.product_name
         form.product_price.data = product.price
         form.barcode.data = product.barcode
+        form.image.data = product.image
+        
+
         return render_template("update.html", title="Update item", form=form, product=product)
     else:
         flash(f"You don't have access to this section",'danger')

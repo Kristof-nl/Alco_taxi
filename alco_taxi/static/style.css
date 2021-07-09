@@ -192,10 +192,14 @@ span {
 }
 
 .small_image {
-  height: 50px;
-  width: 50px;
+  height: 45px;
+  width: 35px;
 }
 
 table {
   margin: 25px;
+}
+
+.space {
+  height: 50px;
 }

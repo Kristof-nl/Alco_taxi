@@ -52,4 +52,5 @@ class UpdateItem(FlaskForm):
     product_name = StringField('Product name', validators= [Length(max=25)])
     product_price = DecimalField('Price', validators= [Length(max=6)])
     barcode = StringField('Barcode', validators= [Length(12)])
+    image = StringField('Foto', validators= [Length(100)])
     submit = SubmitField('Confirm')

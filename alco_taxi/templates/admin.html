@@ -1,30 +1,12 @@
 {% extends "base.html" %}
 {% block title %}Admin{% endblock %}
 {% block content %}
-
-<div class="conteiner">
-    <table class="table table-striped table-sm">
-    <thead>
-        <th>ID</th>
-        <th>Product_name</th>
-        <th>Price</th>
-        <th>Barcode</th>
-        <th>Image</th>
-        <th>Edit</th>
-    </thead>
-    <tbody>
-        {% for product in products %}
-        <tr>
-            <td>{{ product.id }}</td>
-            <td>{{ product.product_name }}</td>
-            <td>{{"%.2f"|format(product.price)}}</td>
-            <td>{{ product.barcode }}</td>
-            <td><img class="small_image" src="{{product.image}}" alt="product image"></td>
-            <td><a href="{{url_for('update', id=product.id)}}" class="btn btn-primary">Update</a></td>
-        </tr>
-        {% endfor %}
-    </tbody>
-    </table>
+<h1>Admin Panel
+</h1>
+<div class="space">
 </div>
-
+<div class="d-grid gap-3 col-6 mx-auto"">
+    <a href="{{ url_for('admin_product')}}"><button class="btn btn-primary col-12" type="button">Products</button></a>
+    <a href="{{ url_for('admin_users')}}"><button class="btn btn-primary col-12" type="button">Users</button></a>
+</div>
 {% endblock content %}
