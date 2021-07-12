@@ -38,11 +38,13 @@ def admin_product():
         return render_template("home.html")
 
 
-@app.route('/admin/users/')
+@app.route('/admin/users/', methods="POST")
 def admin_users():
     if current_user.is_authenticated and current_user.username == 'admin':
-        products = Product.query.all()
-        return render_template("admin_users.html", title="Admin")
+        users = User.query.all()
+        if request.method=="POST":
+            db.session.delete(user.id)
+        return render_template("admin_users.html", users=users)
     else:
         flash(f"You don't have access to this section",'danger')
         return render_template("home.html")
@@ -54,7 +56,7 @@ def update(id):
     if current_user.is_authenticated and current_user.username == 'admin':
         product = Product.query.get_or_404(id)
         form = UpdateItem()
-        if request.method == "POST":
+        if form.validate_on_submit():
             product.product_name = form.product_name.data
             product.price = form.product_price.data
             product.barcode = form.barcode.data
