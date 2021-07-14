@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Admin - Users{% endblock %}
+{% block content %}
+
+<div class="delete">
+    <form method="POST">
+        <h5>Do you really want to delete user: {{user.username}}?</h5>
+        <input class="btn btn-primary" type="submit" value="Cancel" name="action2"/>
+        <input class="btn btn-danger" type="submit" value="Delete" name="action1"/>
+    </form>
+</div>
+
+
+
+
+{% endblock content %}

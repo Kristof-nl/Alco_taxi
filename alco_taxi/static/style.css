@@ -204,3 +204,8 @@ h1 {
   margin: 35px;
   text-align: center;
 }
+
+.delete {
+  text-align: center;
+  margin: 50px;
+}

@@ -38,13 +38,34 @@ def admin_product():
         return render_template("home.html")
 
 
-@app.route('/admin/users/', methods="POST")
+@app.route('/admin/users/', methods=['GET', 'POST'])
 def admin_users():
     if current_user.is_authenticated and current_user.username == 'admin':
         users = User.query.all()
-        if request.method=="POST":
-            db.session.delete(user.id)
         return render_template("admin_users.html", users=users)
+    else:
+        flash(f"You don't have access to this section",'danger')
+        return render_template("home.html")
+
+
+@app.route('/admin/users/delete<int:id>', methods=['GET', 'POST'])
+def admin_delete_users(id):
+    if current_user.is_authenticated and current_user.username == 'admin':
+        user = User.query.get_or_404(id)
+        if request.method == 'POST':
+            if request.form.get('action1') == 'Delete':
+                if user.username == "admin":
+                    flash(f"You can't delete this user!!!",'danger')
+                else:
+                    db.session.delete(user)
+                    db.session.commit()
+                    flash(f"You have succesfully deleted user {user.username}.",'success')
+                return redirect(url_for('admin_users'))
+            else:
+                return redirect(url_for('admin_users'))
+        else:
+            return render_template("delete.html", user=user)
+
     else:
         flash(f"You don't have access to this section",'danger')
         return render_template("home.html")
