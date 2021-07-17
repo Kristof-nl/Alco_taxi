@@ -5,86 +5,64 @@
     <div class="centered">
       <img id="product" src={{products[6].image}} alt="Vodka">
       <h2>{{products[6].product_name}}</h2>
-      <p>Price for one bottle {{ "%.2f"|format(products[3].price) }}</p>
+      <p>Price for one bottle {{ "%.2f"|format(products[6].price) }}</p>
+      <div class="space"></div>
+      <div>
+        <form  class="form-inline" action="{{ url_for('add_to_cart') }}" method='POST'>
+          <input type="hidden" name='product_id' value={{products[6].id}}>
+         <label for="">Choose Quantity:</label>
+         <div class='divider'></div>
+         <input id="quantity" type="number", name="quantity", value='1', min="1", max="20">
+         <div class='divider'></div>
+         <button type="submit" class="btn btn-primary">Add to basket</button>
+        </form>
+      </div>
+    
     </div>
   </div><div class="split">
     <div class="centered">
         <img id="product" src={{products[7].image}} alt="Gin">
       <h2>{{products[7].product_name}}</h2>
-      <p>Price for one bottle {{ "%.2f"|format(products[3].price) }}</p>
+      <p>Price for one bottle {{ "%.2f"|format(products[7].price) }}</p>
+      <div class="space"></div>
+      <div>
+        <form  class="form-inline" action="{{ url_for('add_to_cart') }}" method='POST'>
+          <input type="hidden" name='product_id' value={{products[7].id}}>
+         <label for="">Choose Quantity:</label>
+         <div class='divider'></div>
+         <input id="quantity" type="number", name="quantity", value='1', min="1", max="20">
+         <div class='divider'></div>
+         <button type="submit" class="btn btn-primary">Add to basket</button>
+        </form>
+      </div>
     </div>
+
+
+
+
   </div><div class="split">
     <div class="centered">
         <img id="product_wide" src={{products[8].image}} alt="Whisky">
       <h2>{{products[8].product_name}}</h2>
-      <p>Price for one bottle {{ "%.2f"|format(products[3].price) }}</p>
+      <p>Price for one bottle {{ "%.2f"|format(products[8].price) }}</p>
+      <div class="space"></div>
+      <div>
+        <form  class="form-inline" action="{{ url_for('add_to_cart') }}" method='POST'>
+          <input type="hidden" name='product_id' value={{products[8].id}}>
+         <label for="">Choose Quantity:</label>
+         <div class='divider'></div>
+         <input id="quantity" type="number", name="quantity", value='1', min="1", max="20">
+         <div class='divider'></div>
+         <button type="submit" class="btn btn-primary">Add to basket</button>
+        </form>
+      </div>
     </div>
+    
   </div>
 
   <div>
     <div>
-        <div class="divider-middle"></div>
-        <div class="btn-group" role="group">
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Choose quantity</option>
-          <option value="1">1 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[6].price) }}€</option>
-          <option value="2">2 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[6].price*2) }}€ </option>
-          <option value="3">3 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[6].price*3) }}€ </option>
-          <option value="4">4 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[6].price*4) }}€ </option>
-          <option value="5">5 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[6].price*5) }}€ </option>
-          <option value="6">6 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[6].price*6) }}€ </option>
-          <option value="7">7 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[6].price*7) }}€ </option>
-          <option value="8">8 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[6].price*8) }}€ </option>
-          <option value="9">9 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[6].price*9) }}€ </option>
-          <option value="10">10&emsp;&emsp;&emsp;&nbsp;{{ "%.2f"|format(products[6].price*10) }}€ </option>
-          </select>
-          <div class="divider"></div>
-        </div>
-      <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="submit" class="btn btn-primary">Add to basket</button>
-      </div>
-      <div class="divider-large"></div>
-      <div class="btn-group" role="group">
-        <select class="form-select" aria-label="Default select example">
-          <option selected>Choose quantity</option>
-          <option value="1">1 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[7].price) }}€</option>
-          <option value="2">2 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[7].price*2) }}€ </option>
-          <option value="3">3 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[7].price*3) }}€ </option>
-          <option value="4">4 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[7].price*4) }}€ </option>
-          <option value="5">5 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[7].price*5) }}€ </option>
-          <option value="6">6 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[7].price*6) }}€ </option>
-          <option value="7">7 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[7].price*7) }}€ </option>
-          <option value="8">8 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[7].price*8) }}€ </option>
-          <option value="9">9 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[7].price*9) }}€ </option>
-          <option value="10">10&emsp;&emsp;&emsp;&nbsp;{{ "%.2f"|format(products[7].price*10) }}€ </option>
-        </select>
-        <div class="divider"></div>
-    </div>
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="submit" class="btn btn-primary">Add to basket</button>
-        </div>
-        <div class="divider-large"></div>
-        <div class="btn-group" role="group">
-          <select class="form-select" aria-label="Default select example">
-            <option selected>Choose quantity</option>
-            <option value="1">1 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[8].price) }}€</option>
-          <option value="2">2 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[8].price*2) }}€ </option>
-          <option value="3">3 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[8].price*3) }}€ </option>
-          <option value="4">4 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[8].price*4) }}€ </option>
-          <option value="5">5 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[8].price*5) }}€ </option>
-          <option value="6">6 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[8].price*6) }}€ </option>
-          <option value="7">7 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[8].price*7) }}€ </option>
-          <option value="8">8 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[8].price*8) }}€ </option>
-          <option value="9">9 &emsp;&emsp;&emsp;&nbsp;&nbsp;{{ "%.2f"|format(products[8].price*9) }}€ </option>
-          <option value="10">10&emsp;&emsp;&emsp;&nbsp;{{ "%.2f"|format(products[8].price*10) }}€ </option>
-          </select>
-            <div class="divider"></div>
-        </div>
-        <div class="btn-group" role="group" aria-label="Basic example">
-          <button type="submit" class="btn btn-primary">Add to basket</button>
-        </div>  
-    </div>
-    
-  </div>
+        
+      
 
 {% endblock content %}

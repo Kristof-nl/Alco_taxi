@@ -209,3 +209,22 @@ h1 {
   text-align: center;
   margin: 50px;
 }
+
+
+.form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+form-inline label {
+  margin: 5px 10px 5px 0;
+}
+
+.space {
+  height: 30px;
+}
+
+#quantity {
+  width: 50px;
+}

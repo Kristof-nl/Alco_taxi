@@ -1,6 +1,6 @@
 from flask import render_template, flash, redirect, get_flashed_messages, url_for, request
 from alco_taxi.models import User, Product, Order
-from alco_taxi.forms import RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm, UpdateItem
+from alco_taxi.forms import RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm, UpdateItem, AddtoCart
 from alco_taxi import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user
 from alco_taxi.functions import get_user_name
@@ -110,8 +110,18 @@ def wine():
 
 @app.route('/strong')
 def strong():
-    return render_template("strong.html")
+    form = AddtoCart()
 
+    return render_template("strong.html", form=form)
+
+
+@app.route('/add-to-cart', methods=['POST'])
+def add_to_cart():
+    product_id = request.form.get('product_id')
+    quantity = request.form.get('quantity')
+    product = Product.query.filter_by(id=product_id).first()
+    print(product)
+    return redirect('cart')
 
 
 @app.route('/register', methods=['GET', 'POST'])

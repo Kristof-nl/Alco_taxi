@@ -28,7 +28,7 @@
     <div>
         <div class="divider-middle"></div>
         <div class="btn-group" role="group">
-          <select class="form-select" aria-label="Default select example">
+          <select name="bottle" class="form-select" aria-label="Default select example">
             <option selected>Choose quantity</option>
             <option value="1">1 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[0].price) }}€</option>
             <option value="2">2 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[0].price*2) }}€ </option>
@@ -48,7 +48,7 @@
       </div>
       <div class="divider-large"></div>
       <div class="btn-group" role="group">
-        <select class="form-select" aria-label="Default select example">
+        <select name="can" class="form-select" aria-label="Default select example">
           <option selected>Choose quantity</option>
           <option value="1">1 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[1].price) }}€</option>
           <option value="2">2 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[1].price*2) }}€ </option>
@@ -68,7 +68,7 @@
         </div>
         <div class="divider-large"></div>
         <div class="btn-group" role="group">
-          <select class="form-select" aria-label="Default select example">
+          <select name="case" class="form-select" aria-label="Default select example">
             <option selected>Choose quantity</option>
           <option value="1">1 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[2].price) }}€</option>
           <option value="2">2 &emsp;&emsp;&emsp;&emsp;{{ "%.2f"|format(products[2].price*2) }}€ </option>

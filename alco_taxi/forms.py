@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, DecimalField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, DecimalField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from alco_taxi.models import User
 
@@ -54,3 +54,7 @@ class UpdateItem(FlaskForm):
     barcode = StringField('Barcode', validators= [Length(min=12,max=12)])
     image = StringField('Foto', validators= [Length(max=100)])
     submit = SubmitField('Confirm')
+
+
+class AddtoCart(FlaskForm):
+    quantity = IntegerField('Quantity')
