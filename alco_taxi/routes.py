@@ -1,15 +1,14 @@
-from flask import render_template, flash, redirect, get_flashed_messages, url_for, request
+from flask import render_template, flash, redirect, get_flashed_messages, url_for, request, session
 from alco_taxi.models import User, Product, Order
 from alco_taxi.forms import RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm, UpdateItem, AddtoCart
 from alco_taxi import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user
-from alco_taxi.functions import get_user_name
+from alco_taxi.functions import get_user_name, MergDictionary
 
 #Route to get data from datebase
 @app.context_processor
 def context_processor():
     products = Product.query.all()
-    print(products)
     return dict(products=products)
 
 
@@ -120,8 +119,19 @@ def add_to_cart():
     product_id = request.form.get('product_id')
     quantity = request.form.get('quantity')
     product = Product.query.filter_by(id=product_id).first()
-    print(product)
-    return redirect('cart')
+    if product_id and quantity and request.method == "POST":
+        DictItems = {product_id:{'name': product.product_name,
+        'barcode': product.barcode, 'quantity': quantity, 'image': product.image, 'price': product.price * int(quantity)}}
+
+        if 'Shoppingcart' in session:
+                session['Shoppingcart'] = MergDictionary(session['Shoppingcart'], DictItems)
+                return redirect(request.referrer)
+        else:
+            session['Shoppingcart'] = DictItems
+            return redirect(request.referrer)
+
+    return redirect(url_for('cart'))
+    
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -171,8 +181,11 @@ def logout():
 
 
 @app.route('/cart')
-def basket():
-    return "cart"
+def cart():
+    if "Shoppingcart" not in session:
+        return redirect(request.referrer)
+    return render_template('cart.html')
+
 
 @app.route('/account')
 def account():

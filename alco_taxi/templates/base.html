@@ -15,7 +15,7 @@
         <li><a href="{{ url_for('beer') }}"><i class="fas fa-beer"></i><span>Beer</span></a></li>
         <li><a href="{{ url_for('wine') }}"><i class="fas fa-wine-glass"></i><span>Wine</span></a></li>
         <li><a href="{{ url_for('strong') }}"><i class="fas fa-glass-whiskey"></i><span>Strong alcohol</span></a></li>
-        <li style="float:right"><a href="{{ url_for('basket') }}"><i class="fas fa-shopping-cart"></i><span>Cart</span></a></li>
+        <li style="float:right"><a href="{{ url_for('cart') }}"><i class="fas fa-shopping-cart"></i><span>Cart ({{ session['Shoppingcart']|length }})</span></a></li>
         {% if current_user.is_authenticated %}
         <li style="float:right"><a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a></li>
         <li style="float:right"><a href="{{ url_for('account') }}"><i class="fas fa-user-alt"></i><span>Account</span></a></li>
