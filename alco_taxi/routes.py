@@ -3,7 +3,7 @@ from alco_taxi.models import User, Product, Order
 from alco_taxi.forms import RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm, UpdateItem, AddtoCart
 from alco_taxi import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user
-from alco_taxi.functions import get_user_name, MergDictionary
+from alco_taxi.functions import get_user_name
 
 #Route to get data from datebase
 @app.context_processor
@@ -116,20 +116,16 @@ def strong():
 
 @app.route('/add-to-cart', methods=['POST'])
 def add_to_cart():
+    if 'cart' not in session:
+        session['cart'] = []
+
     product_id = request.form.get('product_id')
-    quantity = request.form.get('quantity')
+    quantity = int(request.form.get('quantity'))
     product = Product.query.filter_by(id=product_id).first()
     if product_id and quantity and request.method == "POST":
-        DictItems = {product_id:{'name': product.product_name,
-        'barcode': product.barcode, 'quantity': quantity, 'image': product.image, 'price': product.price * int(quantity)}}
-
-        if 'Shoppingcart' in session:
-                session['Shoppingcart'] = MergDictionary(session['Shoppingcart'], DictItems)
-                return redirect(request.referrer)
-        else:
-            session['Shoppingcart'] = DictItems
-            return redirect(request.referrer)
-
+        session['cart'].append({'id': product_id, 'quantity': quantity})
+        session.modified = True
+        
     return redirect(url_for('cart'))
     
 
@@ -182,9 +178,19 @@ def logout():
 
 @app.route('/cart')
 def cart():
-    if "Shoppingcart" not in session:
-        return redirect(request.referrer)
-    return render_template('cart.html')
+    products = []
+    for item in session['cart']:
+        product = Product.query.filter_by(id=item['id']).first()
+
+        quantity = int(item['quantity'])
+        total = quantity * product.price
+
+        products.append({'id': product.id, 'name': product.product_name, 'price': product.price, 'image': product.image,
+        "quantity": quantity, 'total': total})
+
+    print(products)
+
+    return render_template('cart.html', products=products)
 
 
 @app.route('/account')
