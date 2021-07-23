@@ -125,6 +125,7 @@ def add_to_cart():
     if product_id and quantity and request.method == "POST":
         session['cart'].append({'id': product_id, 'quantity': quantity})
         session.modified = True
+        print(session['cart'])
         
     return redirect(url_for('cart'))
     
@@ -179,18 +180,21 @@ def logout():
 @app.route('/cart')
 def cart():
     products = []
-    for item in session['cart']:
-        product = Product.query.filter_by(id=item['id']).first()
-
-        quantity = int(item['quantity'])
-        total = quantity * product.price
-
-        products.append({'id': product.id, 'name': product.product_name, 'price': product.price, 'image': product.image,
-        "quantity": quantity, 'total': total})
-
     print(products)
+    try:
+        for item in session['cart']:
 
-    return render_template('cart.html', products=products)
+            product = Product.query.filter_by(id=item['id']).first()
+
+            quantity = int(item['quantity'])
+            total = quantity * product.price
+
+            products.append({'id': product.id, 'name': product.product_name, 'price': product.price, 'image': product.image,
+            "quantity": quantity, 'total': total})
+        return render_template('cart.html', products=products)
+    except:
+        flash('The cart is empty. Add first product to make an order.', 'success')
+        return redirect(url_for('home'))
 
 
 @app.route('/account')

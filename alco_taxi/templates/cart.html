@@ -1,30 +1,47 @@
 {% extends "base.html" %}
 {% block title %}Cart{% endblock %}
 {% block content %}
-<div class="conteiner">
-    <table class="table table-striped table-sm">
-    <thead>
-        <th>ID</th>
-        <th>Product name</th>
-        <th>Quantity</th>
-        <th>Total</th>
-        <th>Image</th>
-        <th>Remove</th>
-    </thead>
-    <tbody>
-        {% for product in products %}
-        <tr>
-            <td>{{ product['id']}}</td>
-            <td>{{ product['name']}}</td>
-            <td>{{ product['quantity'] }}</td>
-            <td>{{ "%.2f"|format(product['total']) }}</td>
-            <td><img class="small_image" src="{{ product['image'] }}" alt="product image"></td>
-            <td><a href="{{url_for('update', id=product.id)}}" class="btn btn-danger">Remove</a></td>
-        </tr>
-        {% endfor %}
-    </tbody>
-    </table>
+
+<div class="container">
+	<h3>Your Shopping Cart</h3>
+	<div class="cart">
+		<div class="products">
+            {% for product in products %}
+			<div class="product">
+				<img src="{{ product['image'] }}">
+				    <div class="product-info">
+                        <h4 class="product-name">{{ product['name']}}</h4>
+                        <p class="product-quantity">Quantity: {{ product['quantity'] }}</p>
+                        <h5 class="product-price">Price: {{ "%.2f"|format(product['total']) }}</h5>
+                        <p class="product-remove">
+                            <i class="fa fa-trash" aria-hidden="true"></i>
+                            <span class="remove">Remove</span>
+					    </p>
+				    </div>
+			</div>
+            {% endfor %}
+		</div>
+            <div class="cart-total">
+                <p>
+                    <span>Total Price</span>
+
+                    <span>₹ 3,000</span>
+                </p>
+                <p>
+                    <span>Number of Items</span>
+                    <span>2</span>
+                </p>
+                <a href="#">Proceed to Checkout</a>
+            </div>
+	</div>
 </div>
+{% if products|length >2 %}
+<div class="after-product"></div>
+{% endif %}
+
+
+
+
 
 
 {% endblock content %}
