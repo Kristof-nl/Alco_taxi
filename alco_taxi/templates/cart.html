@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="container">
-	<h3>Your Shopping Cart</h3>
+	<h3>Your Shopping Cart:</h3>
 	<div class="cart">
 		<div class="products">
             {% for product in products %}
@@ -12,7 +12,7 @@
 				    <div class="product-info">
                         <h4 class="product-name">{{ product['name']}}</h4>
                         <p class="product-quantity">Quantity: {{ product['quantity'] }}</p>
-                        <h5 class="product-price">Price: {{ "%.2f"|format(product['total']) }}</h5>
+                        <h5 class="product-price">Price: {{ "%.2f"|format(product['total']) }} &euro;</h5>
                         <p class="product-remove">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                             <span class="remove">Remove</span>
@@ -23,13 +23,12 @@
 		</div>
             <div class="cart-total">
                 <p>
-                    <span>Total Price</span>
-
-                    <span>₹ 3,000</span>
+                    <span>Total Price:</span>
+                    <span>{{ "%.2f"|format(grand_total) }}</span>
                 </p>
                 <p>
-                    <span>Number of Items</span>
-                    <span>2</span>
+                    <span>Number of Items:</span>
+                    <span>{{ grand_quantity }}</span>
                 </p>
                 <a href="#">Proceed to Checkout</a>
             </div>

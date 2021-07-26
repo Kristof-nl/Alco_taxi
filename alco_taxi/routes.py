@@ -5,6 +5,7 @@ from alco_taxi import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user
 from alco_taxi.functions import get_user_name
 
+
 #Route to get data from datebase
 @app.context_processor
 def context_processor():
@@ -23,7 +24,7 @@ def admin():
         products = Product.query.all()
         return render_template("admin.html", title="Admin")
     else:
-        flash(f"You don't have access to this section",'danger')
+        flash(f"You don't have access to this section.",'danger')
         return render_template("home.html")
 
 
@@ -125,8 +126,7 @@ def add_to_cart():
     if product_id and quantity and request.method == "POST":
         session['cart'].append({'id': product_id, 'quantity': quantity})
         session.modified = True
-        print(session['cart'])
-        
+        flash(f'Product added to cart.', 'success')
     return redirect(url_for('cart'))
     
 
@@ -152,7 +152,7 @@ def register():
 def login():
     #Get user to home page if he is log already in
     if current_user.is_authenticated:
-        return  redirect(url_for('home'))
+        return redirect(url_for('home'))
     form = LoginForm()
     form2 = RegistrationForm()
     if form.validate_on_submit():
@@ -177,24 +177,31 @@ def logout():
 
 
 
-@app.route('/cart')
+@app.route('/cart/')
 def cart():
-    products = []
-    print(products)
     try:
+        products = []
+        grand_total = 0
+        grand_quantity = 0
         for item in session['cart']:
 
             product = Product.query.filter_by(id=item['id']).first()
 
             quantity = int(item['quantity'])
             total = quantity * product.price
+            grand_total += total
+            grand_quantity += quantity
 
             products.append({'id': product.id, 'name': product.product_name, 'price': product.price, 'image': product.image,
             "quantity": quantity, 'total': total})
-        return render_template('cart.html', products=products)
+
+        return render_template('cart.html', products=products, grand_total=grand_total, grand_quantity=grand_quantity)
+    
     except:
-        flash('The cart is empty. Add first product to make an order.', 'success')
+        flash('There is nothing to show. Your cart is empty.', 'secondary')
         return redirect(url_for('home'))
+
+
 
 
 @app.route('/account')
