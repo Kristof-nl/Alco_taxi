@@ -300,7 +300,7 @@ body {
 
 .product-remove:hover{
 	background-color: white;
-	color: green;
+	color: green  ;
 	font-weight: 600;
 	border: 1px solid green;
 }
@@ -397,3 +397,4 @@ h5 {
 .after-product {
   height: 100px;
 }
+

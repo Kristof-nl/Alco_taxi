@@ -5,6 +5,8 @@ from alco_taxi import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user
 from alco_taxi.functions import get_user_name
 
+#Value to shown that cart is empty to avoid problems with session
+empty_cart = True
 
 #Route to get data from datebase
 @app.context_processor
@@ -126,9 +128,10 @@ def add_to_cart():
     if product_id and quantity and request.method == "POST":
         session['cart'].append({'id': product_id, 'quantity': quantity})
         session.modified = True
+        global empty_cart
+        empty_cart = False
         flash(f'Product added to cart.', 'success')
     return redirect(url_for('cart'))
-    
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -179,10 +182,15 @@ def logout():
 
 @app.route('/cart/')
 def cart():
-    try:
+    if empty_cart == True:
+        flash('Your cart is empty. Please add some product.', 'secondary')
+        return redirect(url_for('home'))
+
+    else:
         products = []
         grand_total = 0
         grand_quantity = 0
+        index = 0
         for item in session['cart']:
 
             product = Product.query.filter_by(id=item['id']).first()
@@ -193,13 +201,23 @@ def cart():
             grand_quantity += quantity
 
             products.append({'id': product.id, 'name': product.product_name, 'price': product.price, 'image': product.image,
-            "quantity": quantity, 'total': total})
+            "quantity": quantity, 'total': total, 'index': index})
+
+            index += 1
+
+            if not products:
+                flash('Your cart is empty. Please add some product.', 'secondary')
+                return redirect(url_for('home'))
 
         return render_template('cart.html', products=products, grand_total=grand_total, grand_quantity=grand_quantity)
-    
-    except:
-        flash('There is nothing to show. Your cart is empty.', 'secondary')
-        return redirect(url_for('home'))
+
+
+
+@app.route('/remove-from-cart/<index>')
+def remove_from_cart(index):
+    del session['cart'][int(index)]
+    session.modified = True
+    return redirect(url_for('cart'))
 
 
 
