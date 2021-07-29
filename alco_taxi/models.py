@@ -50,7 +50,21 @@ class Product(db.Model):
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     order_time = db.Column(db.DateTime, nullable=False, default= datetime.datetime.utcnow())
-    owner = db.Column(db.Integer())
+    reference = db.Column(db.String(10))
+    first_name = db.Column(db.String(25))
+    surname = db.Column(db.String(25))
+    email = surname = db.Column(db.String(100))
+    phone_number = db.Column(db.Integer)
+    street = db.Column(db.String(50))
+    house_number = db.Column(db.String(10))
+    city = db.Column(db.String(50))
+    area_code = db.Column(db.String(10))
+    status = db.Column(db.String(10))
+    payment_type = status = db.Column(db.String(10))
 
-    def __repr__(self):
-        return f"Products in order('{self.items}')"
+ 
+class Order_Item(db.Model):
+    id = id = db.Column(db.Integer, primary_key=True)
+    order_id = db.Column(db.Integer, db.ForeignKey('order.id'))
+    product_id = db.Column(db.Integer, db.ForeignKey('product.id'))
+    quantity = db.Column(db.Integer)

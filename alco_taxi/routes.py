@@ -179,13 +179,11 @@ def logout():
     return redirect(url_for('home'))
 
 
-
 @app.route('/cart/')
 def cart():
     if empty_cart == True:
         flash('Your cart is empty. Please add some product.', 'secondary')
         return redirect(url_for('home'))
-
     else:
         products = []
         grand_total = 0
@@ -217,9 +215,15 @@ def cart():
 def remove_from_cart(index):
     del session['cart'][int(index)]
     session.modified = True
+    if not session['cart']:
+        global empty_cart
+        empty_cart = True
     return redirect(url_for('cart'))
 
 
+@app.route('/checkout')
+def checkout():
+    return render_template('checkout.html')
 
 
 @app.route('/account')

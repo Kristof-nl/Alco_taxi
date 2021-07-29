@@ -13,13 +13,12 @@
                         <h4 class="product-name">{{ product['name']}}</h4>
                         <p class="product-quantity">Quantity: {{ product['quantity'] }}</p>
                         <h5 class="product-price">Price: {{ "%.2f"|format(product['total']) }} &euro;</h5>
+                        <a class="white" href="{{ url_for('remove_from_cart', index=product['index']) }}">
                         <p class="product-remove">
-                            <a class="white" href="{{ url_for('remove_from_cart', index=product['index']) }}">
                             <i class="fa fa-trash" aria-hidden="true"></i>
                             <span class="remove">Remove</span>
-                            </a>
 					    </p>
-                    
+                        </a>
 				    </div>
 			</div>
             {% endfor %}
@@ -33,7 +32,7 @@
                     <span>Number of Items:</span>
                     <span>{{ grand_quantity }}</span>
                 </p>
-                <a href="#">Proceed to Checkout</a>
+                <a href="{{ url_for('checkout') }}">Proceed to Checkout</a>
             </div>
 	</div>
 </div>

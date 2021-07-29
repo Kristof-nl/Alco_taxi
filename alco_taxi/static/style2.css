@@ -1,0 +1,439 @@
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+  margin-top: 12px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 5px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 10px;
+  padding: 5px 0;
+  font-size: 20px;
+}
+
+.btn {
+  background-color: tomato;
+  color: white;
+  padding: 12px;
+  margin: 5px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+  margin-top: 15px;
+}
+
+.btn:hover {
+  background-color: red;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+
+h3 {
+  text-align: center;
+  font-size: 22px;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (and change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+
+
+.footer {
+  position:fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  background-color:    rgb(45, 209, 113) ;
+  color: black;
+  text-align: center;
+}
+
+.f1,
+.f2,
+.f3 {
+     
+-moz-box-sizing: border-box;
+box-sizing: border-box;
+display: inline-block;
+text-align: right;
+font-size: 12px;
+padding: 0 6%;
+min-width: 300px;
+width: 33%;
+}
+     
+.f1 {
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+  }
+
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(45, 209, 113);
+  }
+  
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: rgb(0, 0, 0);  
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color:  rgb(121, 219, 162) ;
+  color: black
+}
+
+#logo {
+  height: 40px;
+  width: 40px;
+  float: left;
+}
+
+
+#page_logo {
+  height: 100px;
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 15px;
+}
+
+#nav_logo {
+  height: 30px;
+  width: 30px;
+  padding-right: 2px;
+}
+
+.split {
+color: black;
+background-color:   rgb(100, 218, 149);;
+border-radius: 10px;
+width: 400px;
+height: 400px;
+float: left;
+margin: 50px;
+padding: 15px;
+}
+
+.centered {
+text-align: center;
+padding: 15px;
+}
+
+#product {
+width: 135px;
+height: 250px;
+}
+
+h2 {
+margin-top: 20px;
+margin-bottom: 10px;
+}
+
+#product_wide {
+width: 250px;
+height: 250px;}
+
+.divider{
+width: 10px;
+height: auto;
+display: inline-block;
+}
+
+.divider-middle{
+width: 90px;
+height: auto;
+display: inline-block;
+}
+
+.divider-large{
+width: 175px;
+height: auto;
+display: inline-block;
+}
+
+.content-section{
+background-color:rgb(76, 216, 134);
+text-align: center;
+width: 40%;
+margin: auto;
+padding: 5px;
+border-radius: 15px;
+margin-top: 45px;
+margin-bottom: 15px;
+}
+
+.form-group {
+margin: 10px;
+margin-top: 20px;
+}
+
+legend{
+margin-bottom: 15px;
+}
+
+small {
+margin-left: 675px !important;
+}
+
+.message{
+position: fixed;
+font-size: 14px;
+}
+
+.forgot {
+font-size: 14px;
+margin-top: 20px;
+}
+
+
+.form-check {
+margin-top: 14px !important; 
+margin-left: 225px !important;
+}
+
+#price {
+text-align-last:right;
+}
+
+.fab {
+  color: black;
+  text-align:center;
+  font-size: 30px;
+}
+
+.fas {
+color: black;
+text-align:center;
+font-size: 30px;
+}
+
+span {
+margin: 5px;
+}
+
+.small_image {
+height: 45px;
+width: 35px;
+}
+
+table {
+margin: 25px;
+}
+
+h1 {
+margin: 35px;
+text-align: center;
+}
+
+.delete {
+text-align: center;
+margin: 50px;
+}
+
+
+.form-inline {
+display: flex;
+flex-flow: row wrap;
+align-items: center;
+}
+
+form-inline label {
+margin: 5px 10px 5px 0;
+}
+
+.space {
+height: 50px;
+}
+
+#quantity {
+width: 50px;
+}
+
+
+body {
+overflow-x: hidden;
+}
+
+.container {
+max-width: 1200px;
+margin: 0 auto;
+}
+
+.container > h1{
+padding: 20px 0;
+}
+
+.cart{
+display: flex;
+}
+
+.products{
+flex: 0.75;
+}
+
+.product{
+display: flex;
+width: 100%;
+height: 130px;
+overflow: hidden;
+border: 1px solid silver;
+margin-bottom: 20px;
+}
+
+.product:hover{
+border: none;
+box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+transform: scale(1.01);
+}
+
+.product > img{
+margin-right: 75px;
+width: 70px;
+height: 120px;
+}
+
+.product > img:hover{
+transform: scale(1.04);
+}
+
+.product-info{
+padding: 15px;
+width: 100%;
+position: relative;
+
+}
+
+.product-name, .product-price, .product-offer{
+margin-bottom: 20px;
+}
+
+.product-remove{
+position: absolute;
+bottom: 20px;
+right: 20px;
+padding: 10px 25px;
+background-color: green;
+color: white;
+cursor: pointer;
+border-radius: 5px;
+}
+
+.product-remove:hover{
+background-color: white;
+color: green  ;
+font-weight: 600;
+border: 1px solid green;
+}
+
+.product-quantity > input{
+width: 40px;
+padding: 5px;
+text-align: center;
+}
+
+.fa{
+margin-right: 5px;
+}
+
+
+.cart-total{
+	flex: 0.25;
+	margin-left: 20px;
+	padding: 20px;
+	height: 140px;
+  margin-right: 25px;
+}
+
+.cart-total p{
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 30px;
+	font-size: 20px;
+}
+
+.cart-total a{
+	display: block;
+	text-align: center;
+	height: 40px;
+	line-height: 40px;
+	background-color: tomato;
+	color: white;
+	text-decoration: none;
+}
+
+.cart-total a:hover{
+	background-color: red;
+}
