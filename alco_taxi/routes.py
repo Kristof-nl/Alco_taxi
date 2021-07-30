@@ -221,8 +221,11 @@ def remove_from_cart(index):
     return redirect(url_for('cart'))
 
 
-@app.route('/checkout')
+@app.route('/checkout',  methods=['GET', 'POST'])
 def checkout():
+    first_name = request.form.get('first_name')
+    if request.method == "POST":
+        print(first_name)
     return render_template('checkout.html')
 
 

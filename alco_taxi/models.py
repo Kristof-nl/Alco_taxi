@@ -53,14 +53,14 @@ class Order(db.Model):
     reference = db.Column(db.String(10))
     first_name = db.Column(db.String(25))
     surname = db.Column(db.String(25))
-    email = surname = db.Column(db.String(100))
+    email = db.Column(db.String(100))
     phone_number = db.Column(db.Integer)
     street = db.Column(db.String(50))
     house_number = db.Column(db.String(10))
     city = db.Column(db.String(50))
     area_code = db.Column(db.String(10))
     status = db.Column(db.String(10))
-    payment_type = status = db.Column(db.String(10))
+    payment_type = db.Column(db.String(10))
 
  
 class Order_Item(db.Model):
