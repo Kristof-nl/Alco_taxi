@@ -60,7 +60,8 @@ class Order(db.Model):
     city = db.Column(db.String(50))
     area_code = db.Column(db.String(10))
     status = db.Column(db.String(10))
-    payment_type = db.Column(db.String(10))
+    items = db.relationship('Order_Item', backref='order', lazy=True)
+
 
  
 class Order_Item(db.Model):

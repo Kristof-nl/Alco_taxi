@@ -3,7 +3,7 @@ from alco_taxi.models import User, Product, Order
 from alco_taxi.forms import RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm, UpdateItem, AddtoCart
 from alco_taxi import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user
-from alco_taxi.functions import get_user_name
+from alco_taxi.functions import get_user_name, handle_cart
 
 #Value to shown that cart is empty to avoid problems with session
 empty_cart = True
@@ -185,27 +185,7 @@ def cart():
         flash('Your cart is empty. Please add some product.', 'secondary')
         return redirect(url_for('home'))
     else:
-        products = []
-        grand_total = 0
-        grand_quantity = 0
-        index = 0
-        for item in session['cart']:
-
-            product = Product.query.filter_by(id=item['id']).first()
-
-            quantity = int(item['quantity'])
-            total = quantity * product.price
-            grand_total += total
-            grand_quantity += quantity
-
-            products.append({'id': product.id, 'name': product.product_name, 'price': product.price, 'image': product.image,
-            "quantity": quantity, 'total': total, 'index': index})
-
-            index += 1
-
-            if not products:
-                flash('Your cart is empty. Please add some product.', 'secondary')
-                return redirect(url_for('home'))
+        products, grand_total, grand_quantity, index = handle_cart()
 
         return render_template('cart.html', products=products, grand_total=grand_total, grand_quantity=grand_quantity)
 
@@ -224,8 +204,21 @@ def remove_from_cart(index):
 @app.route('/checkout',  methods=['GET', 'POST'])
 def checkout():
     first_name = request.form.get('first_name')
+    surname = request.form.get('surname')
+    email = request.form.get('email')
+    phone_number = request.form.get('phone')
+    street = request.form.get('street')
+    house_number = request.form.get('house')
+    city = request.form.get('city')
+    zip_code = request.form.get('zip')
+    
     if request.method == "POST":
-        print(first_name)
+        products, grand_total, grand_quantity, index = handle_cart()
+
+        order = Order( first_name = request.form.get('first_name'), surname = request.form.get('surname'),
+        email = request.form.get('email'), phone_number = request.form.get('phone'),  street = request.form.get('street'),
+        house_number = request.form.get('house'), city = request.form.get('city'), area_code = request.form.get('zip'),
+        reference = "ABCD", status = "PENDING")
     return render_template('checkout.html')
 
 
