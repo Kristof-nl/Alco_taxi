@@ -1,5 +1,5 @@
 from flask import render_template, flash, redirect, get_flashed_messages, url_for, request, session
-from alco_taxi.models import User, Product, Order
+from alco_taxi.models import User, Product, Order, Order_Item
 from alco_taxi.forms import RegistrationForm, LoginForm, RequestResetForm, ResetPasswordForm, UpdateItem, AddtoCart
 from alco_taxi import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user
@@ -182,7 +182,7 @@ def logout():
 @app.route('/cart/')
 def cart():
     if empty_cart == True:
-        flash('Your cart is empty. Please add some product.', 'secondary')
+        flash('Your cart is empty. Please add some products.', 'secondary')
         return redirect(url_for('home'))
     else:
         products, grand_total, grand_quantity, index = handle_cart()
@@ -214,11 +214,23 @@ def checkout():
     
     if request.method == "POST":
         products, grand_total, grand_quantity, index = handle_cart()
-
+    
         order = Order( first_name = request.form.get('first_name'), surname = request.form.get('surname'),
         email = request.form.get('email'), phone_number = request.form.get('phone'),  street = request.form.get('street'),
         house_number = request.form.get('house'), city = request.form.get('city'), area_code = request.form.get('zip'),
         reference = "ABCD", status = "PENDING")
+
+        for product in products:
+            order_item = Order_Item(quantity=product['quantity'], product_id=product['id'])
+            order.items.append(order_item)
+
+        db.session.add(order)
+        db.session.commit()
+
+        session['cart'] = []
+        session.modified = True
+        return redirect(url_for('home'))
+
     return render_template('checkout.html')
 
 

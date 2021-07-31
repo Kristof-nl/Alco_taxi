@@ -61,11 +61,11 @@
       <div class="cart-total">
         <p>
             <span>Total Price:</span>
-            <span>1</span>
+            <span>{{ "%.2f"|format(grand_total) }}</span>
         </p>
         <p>
             <span>Number of Items:</span>
-            <span>1</span>
+            <span>{{ grand_quantity }}</span>
         </p>
     </div>
   </div>

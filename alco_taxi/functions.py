@@ -28,7 +28,7 @@ def handle_cart():
         index += 1
 
         if not products:
-            flash('Your cart is empty. Please add some product.', 'secondary')
+            flash('Your cart is empty. Please add some products.', 'secondary')
             return redirect(url_for('home'))
 
     return products, grand_total, grand_quantity, index
