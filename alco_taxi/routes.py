@@ -4,6 +4,7 @@ from alco_taxi.forms import RegistrationForm, LoginForm, RequestResetForm, Reset
 from alco_taxi import app, db, bcrypt
 from flask_login import login_user, current_user, logout_user
 from alco_taxi.functions import get_user_name, handle_cart
+import random
 
 #Value to shown that cart is empty to avoid problems with session
 empty_cart = True
@@ -212,13 +213,14 @@ def checkout():
     city = request.form.get('city')
     zip_code = request.form.get('zip')
     
+    products, grand_total, grand_quantity, index = handle_cart()
+
     if request.method == "POST":
-        products, grand_total, grand_quantity, index = handle_cart()
     
         order = Order( first_name = request.form.get('first_name'), surname = request.form.get('surname'),
         email = request.form.get('email'), phone_number = request.form.get('phone'),  street = request.form.get('street'),
         house_number = request.form.get('house'), city = request.form.get('city'), area_code = request.form.get('zip'),
-        reference = "ABCD", status = "PENDING")
+        reference = "".join([random.choice('ABCDEFGHIJK') for _ in range(8)]), status = "PENDING")
 
         for product in products:
             order_item = Order_Item(quantity=product['quantity'], product_id=product['id'])
@@ -229,9 +231,10 @@ def checkout():
 
         session['cart'] = []
         session.modified = True
+        flash(f'Thank you for your purchase. We will deliver your delivery as soon as posible.', 'success')
         return redirect(url_for('home'))
 
-    return render_template('checkout.html')
+    return render_template('checkout.html', products=products, grand_quantity=grand_quantity, grand_total=grand_total)
 
 
 @app.route('/account')
