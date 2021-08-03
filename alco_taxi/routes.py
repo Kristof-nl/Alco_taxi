@@ -101,6 +101,32 @@ def update(id):
         return render_template("home.html")
 
 
+@app.route('/admin/orders')
+def admin_orders_list():
+    if current_user.is_authenticated and current_user.username == 'admin':
+       orders = Order.query.all()
+
+       return render_template("admin_orders.html", orders=orders)
+    else:
+        flash(f"You don't have access to this section",'danger')
+        return render_template("home.html")
+
+
+
+@app.route('/admin/orders/<order_id>', methods=['GET','POST'])
+def admin_orders(order_id):
+    if current_user.is_authenticated and current_user.username == 'admin':
+       order = Order.query.filter_by(id=int(order_id)).first()
+
+       return render_template("admin_orders_summary.html", order=order)
+    else:
+        flash(f"You don't have access to this section",'danger')
+        return render_template("home.html")
+
+
+
+
+
 @app.route('/beer')
 def beer():
     return render_template("beer.html")
@@ -231,6 +257,8 @@ def checkout():
 
         session['cart'] = []
         session.modified = True
+        global empty_cart
+        empty_cart = True
         flash(f'Thank you for your purchase. We will deliver your delivery as soon as posible.', 'success')
         return redirect(url_for('home'))
 
