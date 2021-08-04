@@ -400,10 +400,10 @@ h5 {
 
 .card {
   margin: auto;
-  margin-top: 25px;
+  margin-top: 15px;
   width: 38%;
   max-width: 600px;
-  padding: 4vh 0;
+  padding: 2vh 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   border-top: 3px solid rgb(252, 103, 49);
   border-bottom: 3px solid rgb(252, 103, 49);
@@ -420,17 +420,20 @@ h5 {
 .title {
   color: rgb(252, 103, 49);
   font-weight: 600;
-  margin-bottom: 2vh;
-  padding: 0 8%;
+  padding: 0 4%;
   font-size: initial
 }
 
+.white_line{
+  height: 9px;
+}
+
 #details {
-  font-weight: 400
+  font-weight: 350
 }
 
 .info {
-  padding: 5% 8%
+  padding: 0% 4%;
 }
 
 .info .col-5 {
@@ -444,9 +447,9 @@ h5 {
 
 .pricing {
   background-color: #ddd3;
-  padding: 2vh 8%;
+  padding: 0.1vh 8%;
   font-weight: 400;
-  line-height: 2.5
+  line-height: 1.75;
 }
 
 .pricing .col-3 {
@@ -454,7 +457,7 @@ h5 {
 }
 
 .total {
-  padding: 2vh 8%;
+  padding: 0.5vh 8%;
   color: rgb(252, 103, 49);
   font-weight: bold
 }
