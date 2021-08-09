@@ -17,6 +17,8 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(60), nullable=False)
 
+
+
     # Reset password with token
     def get_reset_token(self, expires_sec=1800):
         s = Serializer(app.config['SECRET_KEY'], expires_sec)
@@ -52,6 +54,7 @@ class Product(db.Model):
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     order_time = db.Column(db.DateTime, nullable=False, default= datetime.datetime.now())
+    customer_id = db.Column(db.Integer)
     reference = db.Column(db.String(10))
     first_name = db.Column(db.String(25))
     surname = db.Column(db.String(25))

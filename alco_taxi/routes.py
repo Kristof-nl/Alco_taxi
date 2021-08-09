@@ -238,6 +238,7 @@ def checkout():
     house_number = request.form.get('house')
     city = request.form.get('city')
     zip_code = request.form.get('zip')
+    user = current_user.id
     
     products, grand_total, grand_quantity, index = handle_cart()
 
@@ -246,7 +247,8 @@ def checkout():
         order = Order( first_name = request.form.get('first_name'), surname = request.form.get('surname'),
         email = request.form.get('email'), phone_number = request.form.get('phone'),  street = request.form.get('street'),
         house_number = request.form.get('house'), city = request.form.get('city'), area_code = request.form.get('zip'),
-        reference = "".join([random.choice('ABCDEFGHIJK') for _ in range(8)]), status = "PENDING")
+        reference = "".join([random.choice('ABCDEFGHIJK') for _ in range(8)]), status = "PENDING",
+        customer_id = user)
 
         for product in products:
             order_item = Order_Item(quantity=product['quantity'], product_id=product['id'])
@@ -265,9 +267,17 @@ def checkout():
     return render_template('checkout.html', products=products, grand_quantity=grand_quantity, grand_total=grand_total)
 
 
+@app.route('/account-menu')
+def account_menu():
+    if current_user.is_authenticated:
+        user = current_user.id
+        orders = Order.query.all()
+    return render_template('account_menu.html', user=user, orders=orders)
+
 @app.route('/account')
 def account():
-    return "account"
+    return render_template('account.html')
+
 
 
 @app.route('/reset_password', methods=['GET', 'POST'])
