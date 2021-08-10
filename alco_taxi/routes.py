@@ -238,7 +238,10 @@ def checkout():
     house_number = request.form.get('house')
     city = request.form.get('city')
     zip_code = request.form.get('zip')
-    user = current_user.id
+    try:
+        user = current_user.id
+    except:
+        user = 00
     
     products, grand_total, grand_quantity, index = handle_cart()
 
@@ -274,9 +277,11 @@ def account_menu():
         orders = Order.query.all()
     return render_template('account_menu.html', user=user, orders=orders)
 
-@app.route('/account')
-def account():
-    return render_template('account.html')
+
+@app.route('/account/<order_id>')
+def account(order_id):
+    order = Order.query.filter_by(id=int(order_id)).first()
+    return render_template('account.html', order=order)
 
 
 

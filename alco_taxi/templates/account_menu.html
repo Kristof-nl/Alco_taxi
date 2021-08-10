@@ -16,7 +16,6 @@
     <tbody>
         {% for order in orders %}
         {% if order.customer_id == user %}
-        {{YES}}
         <tr>
             <td>{{ order.id }}</td>
             <td>{{ order.reference }}</td>
@@ -24,10 +23,9 @@
             <td>{{ "%.2f"|format(order.order_quantity()) }}</td>
             <td>{{ "%.2f"|format(order.order_total()) }}</td>
             <td>{{ order.status }}</td>
-            <td><a href="{{url_for('admin_orders', order_id=order.id)}}" class="btn btn-primary">Details</a></td>
+            <td><a href="{{url_for('account', order_id=order.id)}}" class="btn btn-primary">Details</a></td>
         </tr>
         {% else %}
-        {{NO}}
         {% endif %}
         {% endfor %}
     </tbody>
