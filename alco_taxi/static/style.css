@@ -405,8 +405,8 @@ h5 {
   max-width: 600px;
   padding: 2vh 0;
   box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  border-top: 3px solid rgb(252, 103, 49);
-  border-bottom: 3px solid rgb(252, 103, 49);
+  border-top: 3px solid rgb(45, 209, 113);
+  border-bottom: 3px solid rgb(45, 209, 113);
   border-left: none;
   border-right: none
 }
@@ -418,7 +418,7 @@ h5 {
 }
 
 .title {
-  color: rgb(252, 103, 49);
+  color: rgb(211, 121, 88);
   font-weight: 600;
   padding: 0 4%;
   font-size: initial
@@ -458,7 +458,7 @@ h5 {
 
 .total {
   padding: 0.5vh 8%;
-  color: rgb(252, 103, 49);
+  color: rgb(211, 121, 88);
   font-weight: bold
 }
 
@@ -611,8 +611,9 @@ h5 {
 }
 
 .taxi-text {
-  font-size: 30px;
+  font-size: 26px;
   text-align: center;
+  font-weight: bold;
   
 }
 

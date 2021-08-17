@@ -8,6 +8,7 @@ import random
 
 #Value to shown that cart is empty to avoid problems with session
 empty_cart = True
+length_cart_0 = None
 
 #Route to get data from datebase
 @app.context_processor
@@ -203,6 +204,9 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
+    global empty_cart
+    empty_cart = True 
+
     return redirect(url_for('home'))
 
 
