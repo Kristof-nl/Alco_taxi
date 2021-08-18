@@ -276,11 +276,18 @@ def checkout():
 
 @app.route('/account-menu')
 def account_menu():
+    customer_orders_list = []
     if current_user.is_authenticated:
         user = current_user.id
         orders = Order.query.all()
-    return render_template('account_menu.html', user=user, orders=orders)
-
+        for order in orders:
+            customer_orders_list.append(order.customer_id)
+    if user in customer_orders_list:
+        return render_template('account_menu.html', user=user, orders=orders)
+    else:
+        flash("You don't have any orders yet. Please add some products firts.", 'secondary')
+        return redirect(url_for('home'))
+        
 
 @app.route('/account/<order_id>')
 def account(order_id):
