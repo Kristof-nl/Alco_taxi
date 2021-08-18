@@ -202,9 +202,6 @@ def login():
 @app.route('/logout')
 def logout():
     logout_user()
-    global empty_cart
-    empty_cart = True 
-
     return redirect(url_for('home'))
 
 
@@ -224,7 +221,7 @@ def cart():
 def remove_from_cart(index):
     del session['cart'][int(index)]
     session.modified = True
-    if not session['cart']:
+    if session['cart'] == []:
         global empty_cart
         empty_cart = True
     return redirect(url_for('cart'))
