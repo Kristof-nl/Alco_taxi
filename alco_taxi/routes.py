@@ -8,7 +8,7 @@ import random
 
 #Value to shown that cart is empty to avoid problems with session
 empty_cart = True
-length_cart_0 = None
+
 
 #Route to get data from datebase
 @app.context_processor
@@ -123,8 +123,6 @@ def admin_orders(order_id):
     else:
         flash(f"You don't have access to this section",'danger')
         return render_template("home.html")
-
-
 
 
 
